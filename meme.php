@@ -15,7 +15,9 @@
             	
 			var canvas = document.getElementById('myMeme');
             		var dataURL = canvas.toDataURL();
-            		console.log(dataURL);
+            		var description = document.getElementById('description').value;
+			
+			console.log(dataURL);
 			
 			console.log(dataURL); 
                         e.preventDefault();
@@ -25,11 +27,13 @@
                                 type: "POST",
 				url: 'upload.php',
                                 data: { 
-                                        imgBase64: dataURL
+                                        imgBase64: dataURL,
+					desc: description
                                 }
                         }).done(function(o) {
                                 console.log('saved');
                         });
+			
                         
                 });     
         });
@@ -106,20 +110,23 @@
     <div id ="wrapper">
 
         <p>Top Text</p>
-	<input type = text id = "topText" name="toptxt">
+	<input type = text id = "topText" name="toptxt"/>
 
         <p>Bottom Text</p>
-        <input type = text id = "bottomText" name="bottxt">
+        <input type = text id = "bottomText" name="bottxt"/>
 
+	<p>Title</p>
+	<input type = text id = "description" name="description"/>
 
 	<p>Select your image!</p>
 
 	<input name="file" type = "file" id = "userImage" accept = "image/">
 	<br><br>
    
-	<input type="button" Value="Post Meme" class="submitter"/>	
 	<br><button id = "make" onclick = "addInputs()">make meh meme!</button>
-    
+   
+	<input type="button" Value="Post Meme" class="submitter"/>
+ 
     </div>
     
     <div>
