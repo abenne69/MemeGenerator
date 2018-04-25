@@ -2,25 +2,30 @@
 	include "db.php";
 	include "usercontrol.php";	
 
-	if(isset($_POST['upload'])){
-		$file = rand(1,10000)."-".$_FILES['file']['name'];
-		$file_location = $_FILES['file']['tmp_name'];
-		$file_size = $_FILES['file']['size'];
-		$file_type = $_FILES['file']['type'];
-		$username = $_SESSION['username'];
-		$date = date("Y-m-d h:i:sa");
-		$folder = "uploads";
-		$toptxt = $_POST['toptxt'];
-		$bottxt = $_POST['bottxt'];
-		$username = $_SESSION['username'];	
+	$file = "uploads/" . uniqid() . '.png';
 		
-		$dbconn = dbConnect("MEME");
-	
-		move_uploaded_file($file_location,"$folder/$$file");
-		$sql = "INSERT INTO Images(file_name, size, type, username, upload_date, toptext, bottomtext) VALUES ('$file','$file_size','$file_type','$username','$date','$toptxt','$bottxt')";
-		mysqli_query($dbconn,$sql);
+	echo '<script>';
+  	echo 'console.log("in php")';
+	echo 'alert("hello")';
+  	echo '</script>';
+	echo "Here in php";
 
-		echo "It Works";
-	}
+	$img = $_POST['imgBase64'];
+	$img = str_replace('data:image/png;base64,', '', $img);
+	$img = str_replace(' ', '+', $img);
+	$data = base64_decode($img);
+
+	file_put_contents($file, $data);
+	$date = date("Y-m-d h:i:sa");
+	$username = $_SESSION['username'];	
+		
+	$dbconn = dbConnect("MEME");
+		
+				
+	$sql = "INSERT INTO Images(file_name, username, upload_date) VALUES ('$file','$username','$date')";
+	mysqli_query($dbconn,$sql);
+
+	echo "It Works";
+	
 
 ?>

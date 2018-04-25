@@ -1,19 +1,9 @@
+<?php require 'usercontrol.php';?>
+
 <!DOCTYPE html>
 <html>
     <head>
     
-	<?php 
-		require 'usercontrol.php'; 	
-		echo "here"
-		if(isset($_SESSION['username']) and isset($_SESSION['password']){
-			echo $_SESSION['username'];
-			exit;
-		}else{
-			echo "here by the waal";
-			header("Location: home.php");
-			exit;
-		}
-	?>
 	<meta charset="utf-8">
         <title>Meme Maker</title>
    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
@@ -21,16 +11,19 @@
        
         $(document).ready(function(){
                 $(".submitter").click(function(e){
-                        alert("Here");
                         console.log("anything?");
-                       
-			var dataURL = getCanvas(); 
- 
+            	
+			var canvas = document.getElementById('myMeme');
+            		var dataURL = canvas.toDataURL();
+            		console.log(dataURL);
+			
+			console.log(dataURL); 
                         e.preventDefault();
-
-                        $.ajax({
-                                url: 'upload.php',
-                                type: 'post',
+			console.log("made it through default");	
+                        
+			$.ajax({
+                                type: "POST",
+				url: 'upload.php',
                                 data: { 
                                         imgBase64: dataURL
                                 }
@@ -79,7 +72,10 @@
 
 	function getCanvas(){
             addInputs();
-            return (document.getElementById('myMeme')).toDataURL();
+            var canvas = document.getElementById('myMeme');
+	    var dataURL = canvas.toDataURL();
+	    console.log(dataURL);
+	    return (document.getElementById('myMeme')).toDataURL();
         }        
         // adds user text inputs to a newly created image/meme
         function addInputs() {
@@ -96,7 +92,9 @@
 
     </head>
     <body>
-    
+	<form method="post" action="http://172.17.149.139/MemeGenerator/logout.php">
+        	<input type="submit" value="Log Out"/>
+	</form>    
         <h2>meh meme maker &nbsp;
         <img src = https://i.redd.it/6z1xtxpi82ky.png style="width:120px;height:120px;">
         <img src = http://i0.kym-cdn.com/photos/images/newsfeed/001/134/408/565.png
