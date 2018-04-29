@@ -3,7 +3,43 @@
 <!DOCTYPE html>
 <html>
     <head>
-    
+	<style>
+	body {
+	 font-family: "Helvetica Neue", Helevetica, Arial, sans-serif;
+	 font-size: 14px;
+	 background: cornflowerblue;
+	}
+
+	h2 {
+	color: white;
+	font-size: 60px;
+	font-family: "Impact";
+	font-style: normal;
+	text-shadow:
+	-5px -5px 0 #000,
+	5 -5px 0 #000,
+	-5px 5px 0 #000,
+	5px 5px 0 #000;
+	}
+
+	div {
+	color: white;
+	font-weight: 300;
+	font-size: 20px;
+	font-family: "Impact";
+	font-style: normal;
+	text-shadow:
+	-1px -1px 0 #000,
+	1px -1px 0 #000,
+	-1px 1px 0 #000,
+	1px 1px 0 #000;
+	}
+
+	#myMeme {
+	width: 300px;
+	}
+
+	</style>
 	<meta charset="utf-8">
         <title>Meme Maker</title>
    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
@@ -92,6 +128,20 @@
             };
             readFile.readAsDataURL(myImage.files[0]);
         }
+
+	function validate() {
+          var txt3 = document.form1.description.value;
+	  var fileName = document.getElementById("userImage").value;
+	  if(text3==""){
+	    alert("Please enter a title for ya meme.");
+	  }
+	  else if(fileName == "") {
+	    alert("No image selected.");
+	  }
+	  else {
+	    addInputs();
+	  }
+	}
     </script>
 
     </head>
@@ -108,22 +158,22 @@
         </h2>
     
     <div id ="wrapper">
-
+    	<form name = "form1" action = "">
         <p>Top Text</p>
 	<input type = text id = "topText" name="toptxt"/>
 
         <p>Bottom Text</p>
         <input type = text id = "bottomText" name="bottxt"/>
-
+	
 	<p>Title</p>
 	<input type = text id = "description" name="description"/>
-
+	</from>
 	<p>Select your image!</p>
 
 	<input name="file" type = "file" id = "userImage" accept = "image/">
 	<br><br>
    
-	<br><button id = "make" onclick = "addInputs()">make meh meme!</button>
+	<br><button id = "make" onclick = "validate()">make meh meme!</button>
    
 	<input type="button" Value="Post Meme" class="submitter"/>
  

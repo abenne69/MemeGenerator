@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
     <head>
-    
 	<?php 
 		require 'usercontrol.php'; 	
 		echo "here"
@@ -14,6 +13,59 @@
 			exit;
 		}
 	?>
+
+	<style>
+
+	  html {
+	  height: 100%;
+	  }
+
+	  body {
+	  font-family: "Helvetic Neue", Helevetica, Arial, sans-serif;
+	  font-size: 14px;
+	  background: linear-gradient(cornflowerblue,lightblue);
+	  background-repeat: no-repeat;
+	  margin: 0;
+	  }
+
+	  h2 {
+	  color: white;
+	  font-size: 60px;
+	  font-family:"Impact";
+	  font-style: normal;
+	  margin: 0;
+	  text-shadow:
+	  -5px -5px 0 #000,
+	  5px -5px 0 #000,
+	  -5px 5px 0 #000,
+	  5px 5px 0 #000;
+	  }
+
+	  div {
+	  padding-left: 10px;
+	  color: white;
+	  font-weight: 300;
+	  font-size: 20px;
+	  font-family: "Impact";
+	  font-style:normal;
+	  text-shadow:
+	  -2px -2px 0 #000,
+	  2px -2px 0 #000,
+	  -2px 2px 0 #000,
+	  2px 2px 0 #000;
+	  }
+
+	  .header {
+	  background: linear-gradient(lightcoral,lightsalmon,palegoldenrod,palegreen,lightblue,plum,pink);
+	  padding-top:0px;
+	  border-bottom: 10px solid white; 
+	  }
+
+	  #myMeme {
+	  width: 300px;
+	  }
+
+	</style>
 	<meta charset="utf-8">
         <title>Meme Maker</title>
    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
@@ -92,35 +144,50 @@
             };
             readFile.readAsDataURL(myImage.files[0]);
         }
-    </script>
+
+	function validate() {
+	  var txt1 = document.form1.toptxt.value;
+	  var txt2 = document.form1.bottxt.value;
+	  var fileName = document.getElementById("userImage").value;
+	  if((txt1 == "")||(text2 = "")) {
+	    alert("Please enter all inputs.");
+	  }
+	  else if(fileName == "") {
+	    alert("No image selected.");
+	  }
+	  else {
+	    addInputs();
+	  }
+	}
+     </script>
 
     </head>
     <body>
-    
-        <h2>meh meme maker &nbsp;
-        <img src = https://i.redd.it/6z1xtxpi82ky.png style="width:120px;height:120px;">
+      <div class = "header">
+	<h2>meh meme maker &nbsp;
+        <img src = http://i.imgur.com/LzLo5ms.png style = "height:120px">
         <img src = http://i0.kym-cdn.com/photos/images/newsfeed/001/134/408/565.png
         style = "width:120px;height:140px;">
         <img src = "http://i0.kym-cdn.com/photos/images/masonry/001/255/479/85b.png"
         style = "width:120px;height:120px;">
         </h2>
-    
+    </div>
     <div id ="wrapper">
-
+      <form name = "form1" action="">
         <p>Top Text</p>
 	<input type = text id = "topText" name="toptxt">
 
         <p>Bottom Text</p>
         <input type = text id = "bottomText" name="bottxt">
 
-
+	</form>
 	<p>Select your image!</p>
 
 	<input name="file" type = "file" id = "userImage" accept = "image/">
 	<br><br>
    
 	<input type="button" Value="Post Meme" class="submitter"/>	
-	<br><button id = "make" onclick = "addInputs()">make meh meme!</button>
+	<br><button id = "make" onclick = "validate()">make meh meme!</button>
     
     </div>
     

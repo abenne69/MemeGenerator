@@ -9,17 +9,70 @@
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	<html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
+	<style>
 
+	html {
+	 height: 100%;
+	}
+
+	body {
+	 font-family:"Helvetic Neue", Helevetica, Arial, sans-serif;
+	 font-size: 12px;
+	 background: linear-gradient(lightcoral,lightsalmon,palegoldenrod,palegreen,lightblue,plum,pink);
+	 text-align: center;
+	 margin: 0;
+	 }
+
+	h3 {
+	  font-family: "Impact";
+	  color: white;
+	  font-size: 30px;
+	  text-shadow:
+	  -2px -2px 0 #000,
+	   2px -2px 0 #000,
+	   -2px 2px 0 #000,
+	   2px 2px 0 #000;
+	}
+	
+	h2 {
+	 font-family: "Impact";
+	 font-size: 50px;
+	 text-align:right;
+	 padding-right: 10px;
+	 color:white;
+	 text-shadow:
+	 -3px -3px 0 #000,
+	 3px -3px 0 #000,
+	 -3px 3px 0 #000,
+	 3px 3px 0 #000;
+	}
+
+	img {
+	  postion: fixed;
+	  height: 190px;
+	  padding-top:5px;
+	  }
+
+	.center {
+	 margin:auto;
+         padding: 20px;
+	 border-radius: 25px;
+	 background: white;
+	 width: 35%;
+	}
+	</style>
 	<title>New User Registration</title>	
 
 	</head>
-
+	<br>
+	<h2>meme city</h2>
 	<h3>New User Registration</h3>
 
   	<p><font color="orangered" size="+1"><tt><b>*</b></tt></font> indicates a required field</p>
 
   <form method="post" action="<?=$_SERVER['PHP_SELF']?>">
-
+  <br><br>
+  <div class = "center">
     <table border="0" cellpadding="0" cellspacing="5">
 
       <tr>
@@ -63,9 +116,9 @@
     </tr>
 
   </table>
-
+</div>
 </form>
-
+<img src = "https://vignette.wikia.nocookie.net/roblox/images/1/18/Patrick_vector_by_zavkat-d6041ea.png/revision/latest?cb=20180101153238">
 </body>
 
 </html>
