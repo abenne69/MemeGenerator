@@ -140,9 +140,7 @@
 				error('Username already exists');
 			}
 			$sql = "INSERT INTO Users (username, password) VALUES ('$_POST[username]','$_POST[password1]')";
-
 			
-
 			if(!mysqli_query($dbconn,$sql)){
 				error('DATABASE ERROR AT INSERT QUERY');
 			}
